@@ -1,0 +1,128 @@
+/* font-family: 'Indie Flower', cursive;
+font-family: 'JetBrains Mono', monospace;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Teko', sans-serif; */
+
+
+/* Animation */
+@keyframes float{
+    10%{
+        transform: translateX(2px);
+    }
+    20%{
+        transform: translateY(2px);
+    }
+    30%{
+        transform: translateX(-2px);
+    }
+    40%{
+        transform: translateY(-2px);
+    }
+    50%{
+        transform: translateX(2px);
+    }
+    60%{
+        transform: translateY(2px);
+    }
+    70%{
+        transform: translateX(-2px);
+    }
+    80%{
+        transform: translateY(-2px);
+    }
+}
+
+body{
+    font-family: 'Indie Flower', cursive;
+    background-color: yellow;
+}
+
+body div h1 {
+    text-align: center;
+}
+
+#bring-out{
+    font-size: 1.2em;
+    text-decoration: underline;
+}
+
+#extra{
+    animation: float 10s 1s infinite;
+}
+
+/* Data */
+#all-info{
+    animation: float 10s 2s infinite;
+
+    font-weight: bold;
+    text-decoration: none;
+    width: 50%;
+    font-size: 1.1em;
+    /* font-size: 50%; */
+    padding: 10px;
+
+}
+#m-year{
+    font-size: 50%;
+}
+#all-info ul{
+    padding: 0px;
+    border-width: 5px;
+    border-color: black;
+    border-style:solid;
+    border-radius: 10px;
+    margin: 0px;
+}
+#all-info li{
+    margin: 0px;
+    list-style-type:none;
+    padding: 5px;
+}
+#all-info li:nth-child(odd){
+    background-color: gold;
+}
+#all-info li:nth-child(even){
+    background-color: orange;
+    text-align: right;
+}
+
+#info{
+    visibility: hidden;
+    background-color: orange;
+    animation: float 10s infinite;
+    display: flex;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 80%;
+}
+
+#critics{
+    max-width: 300px;
+    padding: 10px;
+
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+}
+
+#form-pad{
+    padding-bottom: 10px;
+}
+
+/* input */
+input{
+    background-color: grey;
+    border-radius: 50px;
+    color: white;
+}
+
+/* img */
+#movie-spot{
+    /* display: flex;
+    align-items: flex-end; */
+    max-width: 200px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+}

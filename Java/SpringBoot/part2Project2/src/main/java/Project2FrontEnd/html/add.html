@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="/js/script.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Add to Database</title>
+</head>
+<body>
+    <header>
+        <div id="navWid">
+          <nav>
+            <ul>
+              <li><a class="selectArea" href="/html/home.html">Home</a></li>
+              <li><a class="selectArea" href="/html/add.html">Add</a></li>
+              <li><a class="selectArea" href="/html/update.html">Update</a></li>
+            </ul>
+          </nav>
+        </div>
+    </header>
+    <h1>Game Database : Add</h1>
+    <div>
+        <form action="" id="gameForm">
+            <label for="gameCost">Game Cost:</label>
+            <input required type="number" name="gameCost" id="gameCost">
+            <br>
+            <label for="gameName">Game Name:</label>
+            <input required type="text" name="gameName" id="gameName">
+            <br>
+            <label for="gameType">Game Type:</label>
+            <input required type="text" name="gameType" id="gameType">
+            <br>
+            <label for="platform">Platform:</label>
+            <input required type="text" name="platform" id="platform">
+            <br>
+            <label for="rating">Rating:</label>
+            <input required type="text" name="rating" id="rating">
+            <br>
+            <label for="releaseYear">Release Year:</label>
+            <input required type="number" name="releaseYear" id="releaseYear">
+            <br>
+            <button type="submit" id="submitBtn">Save</button>
+        </form>
+    </div>
+    <div id="updateUser"></div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+﻿@model ObjectItem
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Calculator</title>
+</head>
+<body>
+    <form asp-action="Index" method="post">
+        <div>
+            <label for="">Pizza Size: </label>
+
+            <input type="radio" asp-for="PizzaSize" value="Small"> Small
+            <input type="radio" asp-for="PizzaSize" value="Medium"> Medium
+            <input type="radio" asp-for="PizzaSize" value="Large"> Large
+        </div>
+        <div>
+            <label for="">Crust Type : </label>
+
+            <input type="radio" asp-for="CrustType" value="Thin"> Thin
+            <input type="radio" asp-for="CrustType" value="Regular"> Regular
+            <input type="radio" asp-for="CrustType" value="Stuffed"> Stuffed
+        </div>
+        <div>
+            <label for="toppings">Toppings</label>
+
+            <input type="checkbox" name="NumberOfToppings" value="Pepperoni"> Pepperoni
+            <input type="checkbox" name="NumberOfToppings" value="Mushrooms"> Mushrooms
+            <input type="checkbox" name="NumberOfToppings" value="Onions"> Onions
+        </div>
+        <div>
+            <label for="">Number of Pizzas: </label>
+            <input asp-for="NumberOfPizzas" type="text">
+        </div>
+        <button type="submit">Order</button>
+    </form>
+
+    <form asp-action="Display" method="get">
+        <button type="submit">View Orders</button>
+    </form>
+
+    <h2>Order results</h2>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <p>@TempData["SuccessMessage"]</p>
+    }
+    @if (@Model != null)
+    {
+    <p>Pizza Size: @Model.PizzaSize</p>
+    <p>Crust Type: @Model.CrustType</p>
+    <div>
+        <p>Number of Toppings: </p>
+        @foreach(var item in Model.NumberOfToppings)
+        {
+            @if(@item != null)
+            {
+                <p>@item</p>
+            }
+        }
+    </div>
+    
+    <p>Number of Pizzas: @Model.NumberOfPizzas</p>
+
+    <p>Base Cost: @Model.BaseCost</p>
+    <p>Crust Cost: @Model.CrustCost</p>
+    <p>Topping Cost: @Model.ToppingCost</p>
+    <p>Subtotal: @Model.SubTotal</p>
+    <p>Total Cost: @Model.TotalCost</p>
+
+
+    <form asp-action="SaveItem" method="post">
+        @Html.HiddenFor(model => model.PizzaSize)
+        @Html.HiddenFor(model => model.CrustType)
+        @Html.HiddenFor(model => model.NumberOfToppings)
+        @Html.HiddenFor(model => model.NumberOfPizzas)
+        @Html.HiddenFor(model => model.BaseCost)
+        @Html.HiddenFor(model => model.CrustCost)
+        @Html.HiddenFor(model => model.ToppingCost)
+        @Html.HiddenFor(model => model.SubTotal)
+        @Html.HiddenFor(model => model.TotalCost)
+        
+        <button type="submit">Save Order</button>
+    </form>
+    }
+</body>
+</html>

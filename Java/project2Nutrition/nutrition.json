@@ -1,0 +1,11 @@
+[ {
+  "productName" : "cookie",
+  "caloriesPerServing" : 2,
+  "servingPerContainer" : 2,
+  "sodiumPerServing" : 2.0
+}, {
+  "productName" : "Pizza Crust",
+  "caloriesPerServing" : 200,
+  "servingPerContainer" : 2,
+  "sodiumPerServing" : 1.0
+} ]

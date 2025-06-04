@@ -1,0 +1,18 @@
+[
+  {
+    "gameName": "Cult of the Lamb",
+    "releaseYear": 2022,
+    "gameCost": 36.50,
+    "gameType": "Rougelike",
+    "platform": "NS,Xbox,Playstation,Pc",
+    "rating": "T"
+  },
+  {
+    "gameName": "Binding of Isaac",
+    "releaseYear": 2011,
+    "gameCost": 30.00,
+    "gameType": "Rougelike",
+    "platform": "NS,Xbox,Playstation,Pc",
+    "rating": "M"
+  }
+]

@@ -1,0 +1,43 @@
+[ {
+  "agent" : {
+    "firstName" : "Toby",
+    "lastName" : "Maguire",
+    "nationality" : "USA",
+    "phoneNumber" : "+1(323) 856-2278",
+    "salary" : 7.5E7
+  },
+  "guest" : [ {
+    "firstName" : "John",
+    "lastName" : "Ko",
+    "nationality" : "USA",
+    "mealPlan" : true,
+    "paid" : true
+  } ],
+  "cost" : 595.0,
+  "startDate" : [ 2023, 10, 31 ],
+  "endDate" : [ 2023, 11, 6 ]
+}, {
+  "agent" : {
+    "firstName" : "Amy",
+    "lastName" : "Fecely",
+    "nationality" : "AUSTRALIA",
+    "phoneNumber" : "234-234-2345",
+    "salary" : 70000.0
+  },
+  "guest" : [ {
+    "firstName" : "John",
+    "lastName" : "Ko",
+    "nationality" : "SWITZERLAND",
+    "mealPlan" : false,
+    "paid" : false
+  }, {
+    "firstName" : "Jimmy",
+    "lastName" : "Kim",
+    "nationality" : "ITALY",
+    "mealPlan" : false,
+    "paid" : false
+  } ],
+  "cost" : 1580.0,
+  "startDate" : [ 2023, 10, 31 ],
+  "endDate" : [ 2023, 11, 6 ]
+} ]

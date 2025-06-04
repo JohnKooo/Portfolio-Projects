@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Player Points: @Model.PlayerPoints</h1>
+        <h1>Computer Points: @Model.ComputerPoints</h1>
+
+        <form asp-action="PlayGame" method="post">
+            <div>
+                <label for="">Guess a number between 1 and 100</label>
+                <input type="number" name="playerGuess" min="1" max="100" required>
+            </div>
+            <div>
+                <label for="">Bet Amount</label>
+                <input type="number" name="betAmount" min="25" max="150" required>
+            </div>
+            <button type="submit">Place Your Bet</button>
+        </form>
+        <h1>@Model.WinLose</h1>
+        <h1>Computer Guess: @Model.computerguess</h1>
+        <h1>Computer Bet: @Model.computerBet</h1>
+        <h1>Player Guess: @Model.playerguess</h1>
+        <h1>Final Random Number: @Model.randomNumber</h1>
+    </div>
+</body>
+</html>

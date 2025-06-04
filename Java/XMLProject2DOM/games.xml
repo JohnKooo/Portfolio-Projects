@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<games>
+    <game>
+        <gameName>Cult of the Lamb</gameName>
+        <releaseYear>2022</releaseYear>
+        <gameCost>36.50</gameCost>
+        <type>
+            <gameType>Roguelike</gameType>
+            <platform>NS,Xbox,Playstation,Pc</platform>
+        </type>
+        <rating>
+            <ratings>T</ratings>
+        </rating>
+    </game>
+    <game>
+        <gameName>Binding of Isaac</gameName>
+        <releaseYear>2011</releaseYear>
+        <gameCost>30.00</gameCost>
+        <type>
+            <gameType>Roguelike</gameType>
+            <platform>NS,Xbox,Playstation,Pc</platform>
+        </type>
+        <rating>
+            <ratings>M</ratings>
+        </rating>
+    </game>
+</games>

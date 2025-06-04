@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ShippingCalc.Models.ObjectItem>
+
+@{
+    Layout = "_Layout";
+}
+
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PizzaSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CrustType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfToppings)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfPizzas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaseCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CrustCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToppingCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubTotal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalCost)
+            </td>
+        </tr>
+}

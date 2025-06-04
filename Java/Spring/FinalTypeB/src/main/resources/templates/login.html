@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+<!--    <script src="../static/js/loginScript.js" defer></script>-->
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+<h1>Login Form</h1>
+<div>
+    <form id="loginForm" th:action="@{/}" th:object="${user}" method="post">
+        <div>
+            <label for="username">Username: </label>
+            <input type="text" name="username" id="username" th:field="*{username}">
+        </div>
+        <div>
+            <label for="password">Password: </label>
+            <input type="text" name="password" id="password" th:field="*{password}">
+        </div>
+        <button type="submit" id="submitBtn">Login</button>
+        <button type="submit" id="signupBtn">Sign Up</button>
+    </form>
+    </div>
+</body>
+</html>

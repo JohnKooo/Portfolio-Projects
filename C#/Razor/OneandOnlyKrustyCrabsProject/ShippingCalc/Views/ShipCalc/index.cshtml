@@ -1,0 +1,86 @@
+﻿@model ObjectItem
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Calculator</title>
+</head>
+<body>
+    <form asp-action="Index" method="post">
+        <div>
+            <input type="radio" name="One" value="true"> Krabby Patty - $2.99
+            <input asp-for="KrabbyPattyCount" type="number" min="0" max="10" value="0" placeholder="Quantity">
+        </div>
+        <div>
+            <input type="radio" name="Two" value="true"> Double Krabby Patty - $3.99
+            <input asp-for="DoubleKrabbyPattyCount" type="number" min="0" max="10" value="0" placeholder="Quantity">
+        </div>
+        <div>
+            <input type="radio" name="Three" value="true"> Krabby Meal - $5.99
+            <input asp-for="KrabbyMealCount" type="number" min="0" max="10" value="0" placeholder="Quantity">
+        </div>
+        <div>
+            <input type="radio" name="Four" value="true"> Kelp Shake - $1.50
+            <input asp-for="KelpShakeCount" type="number" min="0" max="10" value="0" placeholder="Quantity">
+        </div>
+        <div>
+            <input type="radio" name="Five" value="true"> Coral Bits - $2.00
+            <input asp-for="CoralBitsCount" type="number" min="0" max="10" value="0" placeholder="Quantity">
+        </div>
+        <div>
+            <input type="radio" name="Six" value="true"> Kelp Fries - $1.75
+            <input asp-for="KelpFriesCount" type="number" min="0" max="10" value="0" placeholder="Quantity">
+        </div>
+        <div>
+            <label for="">Tip Amount: </label>
+            <input asp-for="TipAmount" type="number" value="0">%
+        </div>
+
+        <button type="submit">Order</button>
+    </form>
+
+    <h2>Order results</h2>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <p>@TempData["SuccessMessage"]</p>
+    }
+    @if (@Model != null)
+    {
+    <p>Tip Amount: @Model.TipAmount %</p>   
+
+    <p>Krabby Patty: Count: @Model.KrabbyPattyCount | Cost: @Model.KrabbyPattyTotal</p>
+    <p>Double Krabby Patty: Count: @Model.DoubleKrabbyPattyCount | Cost: @Model.DoubleKrabbyPattyTotal</p>
+    <p>Krabby Meal: Count: @Model.KrabbyMealCount | Cost: @Model.KrabbyMealTotal</p>
+    <p>Kelp Shake: Count: @Model.KelpShakeCount | Cost: @Model.KelpShakeTotal</p>
+    <p>Coral Bits: Count: @Model.CoralBitsCount | Cost: @Model.CoralBitsTotal</p>
+    <p>Kelp Fries: Count: @Model.KelpFriesCount | Cost: @Model.KelpFriesTotal</p>
+
+    <p>Total of all items: @Model.TotalAll</p>
+    <p>Tax: @Model.TaxAll</p>
+    <p>Tip Total: @Model.TipAll</p>
+    <p>Total: @Model.GrantTotal</p>
+
+
+    <form asp-action="SaveItem" method="post">
+        @Html.HiddenFor(model => model.KrabbyPattyCount)
+        @Html.HiddenFor(model => model.DoubleKrabbyPattyCount)
+        @Html.HiddenFor(model => model.KrabbyMealCount)
+        @Html.HiddenFor(model => model.KelpShakeCount)
+        @Html.HiddenFor(model => model.CoralBitsCount)
+        @Html.HiddenFor(model => model.KelpFriesCount)
+        @Html.HiddenFor(model => model.TotalAll)
+        @Html.HiddenFor(model => model.TaxAll)
+        @Html.HiddenFor(model => model.TipAll)
+        @Html.HiddenFor(model => model.GrantTotal)
+        
+        <button type="submit">Save Order</button>
+    </form>
+    }
+</body>
+</html>

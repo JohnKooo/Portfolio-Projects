@@ -1,0 +1,168 @@
+﻿@page "/"
+@rendermode InteractiveServer
+@using Microsoft.AspNetCore.Components.QuickGrid
+@inject ManagementToolProject.Data.TaskContext DB
+@using ManagementToolProject.Models
+@using Microsoft.EntityFrameworkCore
+@inject NavigationManager NavigationManager
+
+
+<PageTitle>Home Of Your Tasks!</PageTitle>
+
+
+<QuickGrid Class="table" Items="DB.Tasks">
+    <PropertyColumn Property="task => task.Title" />
+    <PropertyColumn Property="task => task.Description" />
+    <PropertyColumn Property="task => task.DueDate" />
+    <PropertyColumn Property="task => task.Status" />
+
+    <TemplateColumn Context="task">
+
+        @if (editForm)
+        {
+            <EditForm Model="task" OnValidSubmit="UpdateTask" >
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+
+
+                <label for="title" class="form-label">Title</label> 
+                <InputText id="title" class="form-control" @bind-Value="task.Title" />
+                <ValidationMessage For="@(() => task.Title)" />
+
+                <label for="description" class="form-label">Description</label>
+                <InputText id="description" class="form-control" @bind-Value="task.Description" />
+                <ValidationMessage For="@(() => task.Description)" />
+
+                <label for="duedate" class="form-label">Due Date</label>
+                <InputDate id="dueDate" @bind-Value="task.DueDate" />
+                <validationmessage for="@(() => task.DueDate)" />
+
+                <br />
+
+                <label for="status" class="form-label">Status</label>
+                <InputCheckbox id="status" @bind-Value="task.Status" />
+                <ValidationMessage For="@(() => task.Status)" />
+
+                <button type="submit" >Change</button>
+
+            </EditForm>
+        }
+        
+        @if (!editForm)
+        {
+            <a style="color:blue;" @onclick="EditOn">Edit</a>
+        }
+        else
+        {
+            <a style="color:blue;" @onclick="EditOff">Stop Edit</a>
+        }
+
+        | <a @onclick="() => DeleteTask(task.Id)" >Delete</a>
+    </TemplateColumn>
+</QuickGrid>
+
+
+
+@if (!creatingTask)
+{
+    <button type="submit" class="btn btn-success mb-3"  @onclick="AddItem" >Add Task</button> 
+}
+
+@if (creatingTask)
+{
+    <button type="submit" class="btn btn-success mb-3" @onclick="CancelItem">Cancel</button>
+    <EditForm Model="task" OnValidSubmit="AddTask">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+		<table class="table">
+			<tbody>
+				<tr>
+					<td>
+                        @* <label for="title" class="form-label">Title</label> *@
+                        <InputText id="title" class="form-control" @bind-Value="task.Title" />
+                        <ValidationMessage For="@(() => task.Title)" />
+                    </td>
+
+					<td>
+                        @* <label for="description" class="form-label">Description</label> *@
+                        <InputText id="description" class="form-control" @bind-Value="task.Description" />
+                        <ValidationMessage For="@(() => task.Description)" />
+                    </td>
+
+				    <td>
+                        @* <label for="duedate" class="form-label">due date</label> *@
+                        <InputDate id="dueDate" @bind-Value="task.DueDate" />
+                        <validationmessage for="@(() => task.DueDate)" />
+                    </td> 
+
+					<td>
+                        @* <label for="status" class="form-label">Status</label> *@
+                        <InputCheckbox id="status" @bind-Value="task.Status" />
+                        <ValidationMessage For="@(() => task.Status)" />
+                    </td>
+				</tr>
+			</tbody>
+		</table>
+
+        <button type="submit" class="btn btn-success mb-3">Add</button>
+
+    </EditForm>
+    
+}
+
+
+@code{
+    public List<TaskType> TaskList;
+
+    [SupplyParameterFromForm]
+    public TaskType task { get; set; } = new TaskType();
+
+    public bool creatingTask = false;
+    public bool editForm = false;
+    public void AddItem()
+    {
+        creatingTask = true;
+    }
+
+    public void CancelItem()
+    {
+        creatingTask = false;
+    }
+
+    public void EditOn()
+    {
+        editForm = true;
+    }
+
+    public void EditOff()
+    {
+        editForm = false;
+        NavigationManager.NavigateTo("/", true);
+    }
+
+    public async Task AddTask()
+    {
+        DB.Tasks.Add(task);
+        await DB.SaveChangesAsync();
+        creatingTask = false;
+        NavigationManager.NavigateTo("/", true);
+
+    }
+
+    public async Task DeleteTask(int Id)
+    {
+        TaskType task = await DB.Tasks.FirstOrDefaultAsync(m => m.Id == Id);
+
+
+        DB.Tasks.Remove(task!);
+        await DB.SaveChangesAsync();
+        NavigationManager.NavigateTo("/", true);
+    }
+
+    public async Task UpdateTask()
+    {
+        await DB.SaveChangesAsync();
+        EditOff();
+    }
+}

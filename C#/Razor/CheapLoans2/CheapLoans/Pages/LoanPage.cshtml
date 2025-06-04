@@ -1,0 +1,74 @@
+﻿@page
+@model CheapLoans.Pages.LoanPageModel
+@{
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Page</title>
+</head>
+<body>
+    <div id="formInput">
+        <form method="post" asp-page-handler="LoanCalc">
+            <label>Customer name:</label>
+            <input type="text" asp-for="CustName" />
+            <span asp-validation-for="CustName"></span>
+            <br />
+            <label>Loan Amount:</label>
+            <input type="text" asp-for="LoanAmount" />
+            <span asp-validation-for="LoanAmount"></span>
+            <br />
+            <label>Annual Interest Rate (%):</label>
+            <input type="text" asp-for="AnnualIntRate" />
+            <span asp-validation-for="AnnualIntRate"></span>
+            <br />
+            <label>Number of Payments:</label>
+            <input type="text" asp-for="NumPayments" />
+            <span asp-validation-for="NumPayments"></span>
+            <br />
+            <input type="submit" value="Submit"/>
+        </form>
+    </div>
+    <div>
+        <a class="nav-link text-dark" asp-area="" asp-page="/LoanDisplay">Loan Displays - Click Me!</a>
+    </div>
+    <!--
+    <div>
+        <form method="post" asp-page-handler="Save">
+            <input type="submit" value="Save" />
+        </form>
+    </div>
+    -->
+
+    <div>
+        <h3>Results</h3>
+        @if (Model.SLoan != null)
+        {
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer name</th>
+                        <th>Loan Amount</th>
+                        <th>Annual Interest Rate</th>
+                        <th>Number of Payments</th>
+                        <th>Monthly Pay</th>
+                    </tr>
+                </thead>
+                <Tbody>
+                    <tr>
+                        <td>@Model.SLoan.CustName</td>
+                        <td>@Model.SLoan.LoanAmount $</td>
+                        <td>@Model.SLoan.AnnualIntRate %</td>
+                        <td>@Model.SLoan.NumPayments</td>
+                        <td>@Model.SLoan.CalcMonthlyPay $</td>
+                    </tr>
+                </Tbody>
+            </table>
+        }
+    </div>
+</body>
+</html>
